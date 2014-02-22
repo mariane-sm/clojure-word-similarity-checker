@@ -8,7 +8,11 @@
       (isQuantityOfDifferentLettersAcceptable word2 word1) false)))
 
 (defn isQuantityOfDifferentLettersAcceptable [word1 word2]
-  (<= (- (count word1) (count word2)) maxNumberOfDifferentLetters))
+  (<= 
+    (- 
+      (count word1) 
+      (count word2)) 
+    maxNumberOfDifferentLetters))
 
 (defn compareSameSizeWordEqualityLetterByLetter [word1 word2]
   (map (fn [letterWord1 letterWord2] 
