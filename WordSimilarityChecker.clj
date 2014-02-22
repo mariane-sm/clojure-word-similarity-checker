@@ -1,14 +1,16 @@
 
-
-
 (defn haveAllowedQuantityOfExtraLetters [word1 word2]
   (if (.contains word1 word2)
-    (if (<= (- (count word1) (count word2)) 1) true false)
+    (isQuantityOfDifferentLettersAcceptable word1 word2 1)
     (if (.contains word2 word1)
-      (if (<= (- (count word2) (count word1)) 1) true false) )))  
+      (isQuantityOfDifferentLettersAcceptable word2 word1 1) false)))
+
+(defn isQuantityOfDifferentLettersAcceptable [word1 word2 maxNumberOfDifferentLetters]
+  (<= (- (count word1) (count word2)) maxNumberOfDifferentLetters))
 
 (defn compareSameSizeWordEqualityLetterByLetter [word1 word2]
-  (map (fn [letterWord1 letterWord2] (= letterWord1 letterWord2)) (seq word1) (seq word2)))
+  (map (fn [letterWord1 letterWord2] 
+         (= letterWord1 letterWord2)) (seq word1) (seq word2)))
 
 (defn areSameSizeWordsSimilar [word1 word2]
   (<= (- 
@@ -17,7 +19,9 @@
       1))
   
 (defn isSimilar [word1 word2]
-  (if (= (count word1) (count word2)) 
+  (if (= 
+        (count word1) 
+        (count word2)) 
     (areSameSizeWordsSimilar word1 word2) 
     (haveAllowedQuantityOfExtraLetters word1 word2)))
 

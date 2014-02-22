@@ -1,4 +1,4 @@
-clojure-word-similarity
+clojure-word-similarity-checker
 ======================
 
 #####A word is similar to another word only if: 
